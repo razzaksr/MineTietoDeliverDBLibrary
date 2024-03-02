@@ -14,7 +14,7 @@ public class KYCDatabaseRemote implements KYCRemote{
     public void save(KYC kyc) {
         String query="insert into kycs values (kycs_seq.nextval,?,?)";
         try{
-            PreparedStatement preparedStatement= connection.prepareStatement(query,PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement= connection.prepareStatement(query);
             preparedStatement.setString(1,kyc.getName());
             preparedStatement.setDouble(2,kyc.getBalance());
             int info=preparedStatement.executeUpdate();
